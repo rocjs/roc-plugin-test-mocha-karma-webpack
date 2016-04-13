@@ -5,7 +5,7 @@ import { invokeHook } from '../roc/util';
 
 export default () => (targets, { options: { grep, watch } }) => () => {
     if (targets.find((target) => target === 'web')) {
-        appendSettings({ build: { mode: 'test '}});
+        appendSettings({ build: { mode: 'test'}});
         // Create Webpack configuration that is to be used in a browser.
         const rocBuilder = invokeHook('build-webpack', 'web');
 
