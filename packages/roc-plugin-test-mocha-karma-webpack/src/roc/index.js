@@ -17,7 +17,7 @@ export default {
     name,
     version,
     dependencies: {
-        'roc-package-webpack-web': '~1.0.0'
+        'roc-package-webpack-web': '^1.0.0-alpha'
     },
     plugins: [require.resolve('roc-abstract-plugin-test')],
 
