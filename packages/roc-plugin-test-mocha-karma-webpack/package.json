@@ -1,0 +1,51 @@
+{
+  "name": "roc-plugin-test-mocha-karma-webpack",
+  "version": "1.0.0-alpha.0",
+  "description": "Adds a way to easily test Webpack projects in Roc",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "roc",
+    "roc-plugin",
+    "webpack",
+    "karma",
+    "mocha",
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rocjs/roc-plugin-test-mocha-karma-webpack.git"
+  },
+  "author": "VG",
+  "license": "MIT",
+  "dependencies": {
+    "expect": "1.16.0",
+    "isparta": "4.0.0",
+    "isparta-loader": "2.0.0",
+    "karma": "0.13.22",
+    "karma-coverage": "0.5.5",
+    "karma-failed-reporter": "0.0.3",
+    "karma-mocha": "0.2.2",
+    "karma-phantomjs-launcher": "1.0.0",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-spec-json-reporter": "0.0.8",
+    "karma-spec-reporter": "0.0.25",
+    "karma-webpack": "1.7.0",
+    "mocha": "2.4.5",
+    "phantomjs-prebuilt": "2.1.7",
+    "roc": "^1.0.0-rc",
+    "roc-abstract-plugin-test": "^1.0.0-alpha",
+    "webpack": "1.12.14"
+  },
+  "devDependencies": {
+    "babel-eslint": "~5.0.0",
+    "eslint": "~1.10.3",
+    "eslint-config-vgno": "~5.0.0"
+  }
+}
