@@ -15,6 +15,10 @@ export default () => (targets, { options: { grep, watch } }) => () => {
             rocBuilder.buildConfig
         );
 
-        new Server(karmaConfig).start();
+        new Server(karmaConfig, (exitCode) => {
+            /* eslint-disable no-process-exit */
+            process.exit(exitCode);
+            /* eslint-enable */
+        }).start();
     }
 };
