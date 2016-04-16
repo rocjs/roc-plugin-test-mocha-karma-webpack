@@ -10,8 +10,8 @@ export default () => (targets, { options: { grep, watch } }) => () => {
         const rocBuilder = invokeHook('build-webpack', 'web');
 
         const karmaConfig = invokeHook('build-karma-config',
-            watch,
             grep,
+            watch,
             rocBuilder.buildConfig
         );
 
