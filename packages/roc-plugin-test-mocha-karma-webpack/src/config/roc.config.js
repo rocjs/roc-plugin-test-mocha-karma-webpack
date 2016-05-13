@@ -1,14 +1,16 @@
 export default {
     settings: {
         test: {
-            entry: '',
-            tests: {
-                pattern: /\.test$/,
-                path: 'tests'
-            },
-            src: {
-                path: 'src',
-                pattern: /\.js$/
+            web: {
+                entry: '',
+                tests: {
+                    pattern: '**/*.test.js',
+                    path: 'tests'
+                },
+                src: {
+                    path: 'src',
+                    pattern: '**/*.js'
+                }
             }
         }
     }

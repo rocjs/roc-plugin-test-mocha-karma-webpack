@@ -2,29 +2,38 @@ import {
     isPath,
     isRegExp,
     isString,
-    isBoolean
+    isBoolean,
+    oneOf
 } from 'roc/validators';
+
+import {
+    toBoolean
+} from 'roc/converters';
 
 export default {
     settings: {
         groups: {
-            test: 'Settings related to testing'
+            test: {
+                web: 'Settings related to testing for the browser.'
+            }
         },
         descriptions: {
             test: {
-                entry: 'The entry point that Webpack should be using for the tests, will not be needed to be ' +
-                    'changed in most situations.',
-                tests: {
-                    pattern: 'A regex pattern for which the test files must match, will be used if no custom entry ' +
-                        'point is defined.',
-                    path: 'A path for which the test files are located, will be used if no custom entry ' +
-                        'point is defined.'
-                },
-                src: {
-                    pattern: 'A regex pattern for which the src files must match, will be used if no custom entry ' +
-                        'point is defined. Will be used to get correct code coverage.',
-                    path: 'A path for which the src files are located, will be used if no custom entry ' +
-                        'point is defined. Will be used to get correct code coverage.'
+                web: {
+                    entry: 'The entry point that Webpack should be using for the tests, will not be needed to be ' +
+                        'changed in most situations.',
+                    tests: {
+                        path: 'The base path to start resolving tests from, should not be the root of the project.',
+                        pattern: 'Should be either a glob pattern for which the test files are located or a RegExp. ' +
+                            'Will be used if no custom entry point is defined. Will be used to get correct code ' +
+                            'coverage.'
+                    },
+                    src: {
+                        path: 'The base path to start resolving src files from, should not be the root of the project.',
+                        pattern: 'Should be either a glob pattern for which the src files are located or a RegExp. ' +
+                            'Will be used if no custom entry point is defined. Will be used to get correct code ' +
+                            'coverage.'
+                    }
                 }
             }
         },
@@ -33,14 +42,16 @@ export default {
                 mode: /^dev|dist|test$/i
             },
             test: {
-                entry: isPath,
-                tests: {
-                    path: isPath,
-                    pattern: isRegExp
-                },
-                src: {
-                    path: isPath,
-                    pattern: isRegExp
+                web: {
+                    entry: isPath,
+                    tests: {
+                        path: isPath,
+                        pattern: oneOf(isRegExp, isString)
+                    },
+                    src: {
+                        path: isPath,
+                        pattern: oneOf(isRegExp, isString)
+                    }
                 }
             }
         }
@@ -58,6 +69,12 @@ export default {
                 description: 'If the tests should run in watch mode.',
                 default: false,
                 validation: isBoolean
+            }, {
+                name: 'coverage',
+                description: 'If coverage reports should be generated for the code.',
+                default: true,
+                validation: isBoolean,
+                converter: toBoolean
             }]
         }
     }
