@@ -45,7 +45,8 @@ export default ({ settings }) => (
         webpack: webpackConfig,
 
         webpackMiddleware: {
-            noInfo: true
+            noInfo: settings.dev.devMiddleware.noInfo,
+            quiet: settings.dev.devMiddleware.quiet
         },
 
         // Set the basePath to be where the command is running from, normally this is resolved to this file location
