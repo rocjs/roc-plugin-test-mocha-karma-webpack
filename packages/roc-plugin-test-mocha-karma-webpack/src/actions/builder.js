@@ -1,6 +1,7 @@
 import { join } from 'path';
+import micromatch from 'micromatch';
 
-export default ({ settings, previousValue: rocBuilder }) => () => () => {
+export default ({ settings, previousValue: rocBuilder }) => (target, coverage) => () => {
     let {
         buildConfig,
         builder,
@@ -11,41 +12,35 @@ export default ({ settings, previousValue: rocBuilder }) => () => () => {
     buildConfig.entry = {};
     buildConfig.output = {};
 
-    // Remove normal babel-loader
-    buildConfig.module.loaders = buildConfig.module.loaders.filter((loader) => loader.id !== 'babel');
-
-    buildConfig.module.loaders.push({
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [
-            /tests/
-        ]
-    });
-
-    buildConfig.module.preLoaders.push({
-        test: /\.js$/,
-        loader: require.resolve('isparta-loader'),
-        exclude: [
-            /node_modules/,
-            /tests/,
-            /karma/,
-            /src\/vendor/
-        ]
-    });
+    if (coverage) {
+        buildConfig.babel = {
+            ...buildConfig.babel,
+            env: {
+                test: {
+                    plugins: [ [
+                        require.resolve('babel-plugin-__coverage__'),
+                        {
+                            only: settings.test.web.src.path + '/**/*.js'
+                        }
+                    ] ]
+                }
+            }
+        };
+    }
 
     buildConfig.resolve.alias = {
         ...buildConfig.resolve.alias,
-        src: join(process.cwd(), settings.test.src.path)
+        src: join(process.cwd(), settings.test.web.src.path)
     };
 
     buildConfig.resolve.fallback.push(join(__dirname, '..', '..', 'node_modules'));
 
     buildConfig.plugins.push(
         new builder.DefinePlugin({
-            __PATH_TESTS__: JSON.stringify(join(process.cwd(), settings.test.tests.path)),
-            __PATTERN_TESTS__: settings.test.tests.pattern,
-            __PATH_SRC__: JSON.stringify(join(process.cwd(), settings.test.src.path)),
-            __PATTERN_SRC__: settings.test.src.pattern
+            __PATH_TESTS__: JSON.stringify(join(process.cwd(), settings.test.web.tests.path)),
+            __PATTERN_TESTS__: getRegexp(settings.test.web.tests.pattern),
+            __PATH_SRC__: JSON.stringify(join(process.cwd(), settings.test.web.src.path)),
+            __PATTERN_SRC__: getRegexp(settings.test.web.src.pattern)
         })
     );
 
@@ -55,3 +50,11 @@ export default ({ settings, previousValue: rocBuilder }) => () => () => {
         info
     };
 };
+
+function getRegexp(regexp) {
+    if (regexp instanceof RegExp) {
+        return regexp;
+    }
+
+    return micromatch.makeRe('./' + regexp);
+}

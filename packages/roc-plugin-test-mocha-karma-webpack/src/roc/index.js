@@ -50,6 +50,10 @@ export default {
                 name: 'target',
                 validation: isString,
                 description: 'The target for which the Webpack configuration should be build for.'
+            }, {
+                name: 'coverage',
+                validation: isBoolean,
+                description: 'If the code should be prepared for coverage generation.'
             }]
         },
         'build-karma-config': {
@@ -64,6 +68,11 @@ export default {
                 name: 'watch',
                 validation: isBoolean,
                 description: 'If watch mode should be enabled.'
+            }, {
+                name: 'coverage',
+                validation: isBoolean,
+                default: true,
+                description: 'If coverage should be generated.'
             }, {
                 name: 'webpackConfig',
                 validation: isObject(),
