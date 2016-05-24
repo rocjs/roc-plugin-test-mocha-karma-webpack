@@ -31,6 +31,7 @@ __Expected return value:__ `{}`
 | ------------- | --------------------------------------------------------------------------- | --------- |
 | grep          | RegExp that will be compiled by Mocha and limit what tests that should run. | `String`  |
 | watch         | If watch mode should be enabled.                                            | `Boolean` |
+| coverage      | If coverage should be generated.                                            | `Boolean` |
 | webpackConfig | Webpack configuration to use.                                               | `{}`      |
 
 ### build-webpack
@@ -42,6 +43,7 @@ __Expected return value:__ `{}`
 
 #### Arguments
 
-| Name   | Description                                                         | Type     |
-| ------ | ------------------------------------------------------------------- | -------- |
-| target | The target for which the Webpack configuration should be build for. | `String` |
+| Name     | Description                                                         | Type      |
+| -------- | ------------------------------------------------------------------- | --------- |
+| target   | The target for which the Webpack configuration should be build for. | `String`  |
+| coverage | If the code should be prepared for coverage generation.             | `Boolean` |

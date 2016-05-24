@@ -1,22 +1,24 @@
 # Settings for `roc-plugin-test-mocha-karma-webpack`
 
 ## Test
-Settings related to testing
 
-| Name    | Description                                                                                                                                      | Path               | CLI option           | Default     | Type       | Required |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ | -------------------- | ----------- | ---------- | -------- |
-| entry   | The entry point that Webpack should be using for the tests, will not be needed to be changed in most situations.                                 | test.entry         | --test-entry         | `null`      | `Filepath` | No       |
+### Web
+Settings related to testing for the browser.
 
-### Src
+| Name    | Description                                                                                                                                                                    | Path                   | CLI option               | Default          | Type              | Required |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ------------------------ | ---------------- | ----------------- | -------- |
+| entry   | The entry point that Webpack should be using for the tests, will not be needed to be changed in most situations.                                                               | test.web.entry         | --test-web-entry         | `null`           | `Filepath`        | No       |
 
-| Name    | Description                                                                                                                                      | Path               | CLI option           | Default     | Type       | Required |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ | -------------------- | ----------- | ---------- | -------- |
-| path    | A path for which the src files are located, will be used if no custom entry point is defined. Will be used to get correct code coverage.         | test.src.path      | --test-src-path      | `"src"`     | `Filepath` | No       |
-| pattern | A regex pattern for which the src files must match, will be used if no custom entry point is defined. Will be used to get correct code coverage. | test.src.pattern   | --test-src-pattern   | `/\.js$/`   | `RegExp`   | No       |
+#### Src
 
-### Tests
+| Name    | Description                                                                                                                                                                    | Path                   | CLI option               | Default          | Type              | Required |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ------------------------ | ---------------- | ----------------- | -------- |
+| path    | The base path to start resolving src files from, should not be the root of the project.                                                                                        | test.web.src.path      | --test-web-src-path      | `"src"`          | `Filepath`        | No       |
+| pattern | Should be either a glob pattern for which the src files are located or a RegExp. Will be used if no custom entry point is defined. Will be used to get correct code coverage.  | test.web.src.pattern   | --test-web-src-pattern   | `"**/*.js"`      | `RegExp / String` | No       |
 
-| Name    | Description                                                                                                                                      | Path               | CLI option           | Default     | Type       | Required |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ | -------------------- | ----------- | ---------- | -------- |
-| path    | A path for which the test files are located, will be used if no custom entry point is defined.                                                   | test.tests.path    | --test-tests-path    | `"tests"`   | `Filepath` | No       |
-| pattern | A regex pattern for which the test files must match, will be used if no custom entry point is defined.                                           | test.tests.pattern | --test-tests-pattern | `/\.test$/` | `RegExp`   | No       |
+#### Tests
+
+| Name    | Description                                                                                                                                                                    | Path                   | CLI option               | Default          | Type              | Required |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ------------------------ | ---------------- | ----------------- | -------- |
+| path    | The base path to start resolving tests from, should not be the root of the project.                                                                                            | test.web.tests.path    | --test-web-tests-path    | `"tests"`        | `Filepath`        | No       |
+| pattern | Should be either a glob pattern for which the test files are located or a RegExp. Will be used if no custom entry point is defined. Will be used to get correct code coverage. | test.web.tests.pattern | --test-web-tests-pattern | `"**/*.test.js"` | `RegExp / String` | No       |

@@ -33,6 +33,7 @@ roc-plugin-test-mocha-karma-webpack test [targets]
 
 | Name        | Description                                                                              | Required | Type            | Default |
 | ----------- | ---------------------------------------------------------------------------------------- | -------- | --------------- | ------- |
+| --coverage  | If coverage reports should be generated for the code.                                    | No       | `Boolean`       | `true`  |
 | -g, --grep  | Will only run tests that match the given pattern. Will be compiled to a RegExp by Mocha. | No       | `String`        |         |
 | -w, --watch | If the tests should run in watch mode.                                                   | No       | `Boolean`       | `false` |
 
