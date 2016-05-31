@@ -25,7 +25,7 @@
   "author": "VG",
   "license": "MIT",
   "dependencies": {
-    "babel-plugin-__coverage__": "~0.111111.11",
+    "babel-plugin-__coverage__": "~1.11.111",
     "expect": "~1.20.1",
     "karma": "~0.13.22",
     "karma-coverage": "~0.5.5",
