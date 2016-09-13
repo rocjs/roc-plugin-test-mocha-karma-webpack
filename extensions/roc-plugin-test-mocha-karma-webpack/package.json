@@ -1,6 +1,6 @@
 {
   "name": "roc-plugin-test-mocha-karma-webpack",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-beta.0",
   "description": "Adds a way to easily test Webpack projects for the web in Roc",
   "main": "lib/index.js",
   "scripts": {
@@ -18,13 +18,16 @@
     "mocha",
     "test"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rocjs/roc-plugin-test-mocha-karma-webpack.git"
-  },
-  "author": "VG",
+  "repository": "https://github.com/rocjs/roc-plugin-test-mocha-karma-webpack/tree/master/extensions/roc-plugin-test-mocha-karma-webpack",
+  "author": "Verdens Gang AS",
+  "contributors": [
+    {
+      "name": "Gustaf Dalemar"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
+    "babel-core": "^6.10.4",
     "babel-plugin-__coverage__": "~1.11.111",
     "expect": "~1.20.1",
     "karma": "~0.13.22",
@@ -44,8 +47,15 @@
     "webpack": "1.13.0"
   },
   "devDependencies": {
-    "babel-eslint": "~5.0.0",
-    "eslint": "~1.10.3",
-    "eslint-config-vgno": "~5.0.0"
+    "babel-eslint": "~6.1.2",
+    "eslint": "~3.0.1",
+    "eslint-config-airbnb-base": "~4.0.0",
+    "eslint-plugin-babel": "~3.3.0",
+    "eslint-plugin-import": "~1.10.2"
+  },
+  "roc": {
+    "packages": [
+      "./lib/index.js"
+    ]
   }
 }

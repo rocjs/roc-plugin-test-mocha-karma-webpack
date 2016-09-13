@@ -1,4 +1,4 @@
-export default ({ settings }) => (
+export default ({ context: { config: { settings } } }) => (
     grep,
     watch,
     coverage,
@@ -12,45 +12,45 @@ export default ({ settings }) => (
             require.resolve('karma-mocha'),
             require.resolve('karma-spec-reporter'),
             require.resolve('karma-sourcemap-loader'),
-            require.resolve('karma-phantomjs-launcher')
+            require.resolve('karma-phantomjs-launcher'),
         ],
 
-        browsers: [ 'PhantomJS' ],
+        browsers: ['PhantomJS'],
 
         phantomjsLauncher: {
             // Have PhantomJS exit if a ResourceError is encountered (useful if karma exits without killing phantom)
-            exitOnResourceError: true
+            exitOnResourceError: true,
         },
 
         singleRun: !watch,
 
-        frameworks: [ 'mocha' ],
+        frameworks: ['mocha'],
 
         files: [entry],
 
         preprocessors: {
-            [entry]: ['webpack', 'sourcemap']
+            [entry]: ['webpack', 'sourcemap'],
         },
 
         reporters: [
-            'spec'
+            'spec',
         ],
 
         client: {
             mocha: {
-                grep
-            }
+                grep,
+            },
         },
 
         webpack: webpackConfig,
 
         webpackMiddleware: {
             noInfo: settings.dev.devMiddleware.noInfo,
-            quiet: settings.dev.devMiddleware.quiet
+            quiet: settings.dev.devMiddleware.quiet,
         },
 
         // Set the basePath to be where the command is running from, normally this is resolved to this file location
-        basePath: process.cwd()
+        basePath: process.cwd(),
     };
 
     if (coverage) {
@@ -62,8 +62,8 @@ export default ({ settings }) => (
                 { type: 'html', subdir: 'html' },
                 { type: 'cobertura', subdir: 'cobertura' },
                 { type: 'text-summary', subdir: 'summary', file: 'report.txt' },
-                { type: 'text-summary' }
-            ]
+                { type: 'text-summary' },
+            ],
         };
     }
 

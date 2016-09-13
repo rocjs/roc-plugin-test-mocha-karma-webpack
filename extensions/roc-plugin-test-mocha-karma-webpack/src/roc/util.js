@@ -1,14 +1,12 @@
 import { runHook } from 'roc';
 
+// eslint-disable-next-line
+export const packageJSON = require('../../package.json');
+
 /**
  * The name of the package, for easy consumption.
  */
-export const name = require('../../package.json').name;
-
-/**
- * The version of the package
- */
-export const version = require('../../package.json').version;
+export const name = packageJSON.name;
 
 /**
  * Helper function for invoking/running a hook, pre-configured for the current package.

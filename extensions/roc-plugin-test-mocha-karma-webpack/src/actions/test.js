@@ -3,18 +3,18 @@ import { appendSettings } from 'roc';
 
 import { invokeHook } from '../roc/util';
 
-export default () => (targets, { options: { grep, watch, coverage } }) => {
+export default () => (targets, { grep, watch, coverage }) => {
     if (targets.find((target) => target === 'web')) {
         return () => {
-            appendSettings({ build: { mode: 'test'}});
+            appendSettings({ build: { mode: 'test' } });
             // Create Webpack configuration that is to be used in a browser.
-            const rocBuilder = invokeHook('build-webpack', 'web', coverage);
+            const webpackConfig = invokeHook('build-webpack', 'web', coverage);
 
             const karmaConfig = invokeHook('build-karma-config',
                 grep,
                 watch,
                 coverage,
-                rocBuilder.buildConfig
+                webpackConfig
             );
 
             // TODO: Solve this workaround. If we don't listen for SIGPIPE and the
@@ -30,4 +30,6 @@ export default () => (targets, { options: { grep, watch, coverage } }) => {
             }).start();
         };
     }
+
+    return undefined;
 };
