@@ -39,8 +39,8 @@
     "micromatch": "~2.3.8",
     "mocha": "~2.4.5",
     "phantomjs-prebuilt": "~2.1.7",
-    "roc": "^1.0.0-rc",
-    "roc-abstract-plugin-test": "^1.0.0-alpha",
+    "roc": "1.0.0-rc.10",
+    "roc-abstract-plugin-test": "1.0.0-alpha.2",
     "webpack": "1.13.0"
   },
   "devDependencies": {
