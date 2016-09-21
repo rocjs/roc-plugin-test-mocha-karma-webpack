@@ -42,9 +42,8 @@
     "micromatch": "~2.3.8",
     "mocha": "~2.4.5",
     "phantomjs-prebuilt": "~2.1.7",
-    "roc": "^1.0.0-rc",
-    "roc-abstract-plugin-test": "^1.0.0-alpha",
-    "webpack": "1.13.0"
+    "roc": "1.0.0-rc.11",
+    "roc-abstract-plugin-test": "1.0.0-beta.1"
   },
   "devDependencies": {
     "babel-eslint": "~6.1.2",
