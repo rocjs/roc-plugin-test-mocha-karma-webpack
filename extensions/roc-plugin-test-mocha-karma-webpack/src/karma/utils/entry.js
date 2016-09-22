@@ -5,6 +5,8 @@
 * However this code will in the end run inside a browser that might not support const, like PhantomJS
 */
 
+/* eslint-disable */
+
 var testContext = require.context(__PATH_TESTS__, true, __PATTERN_TESTS__);
 testContext.keys().forEach(testContext);
 
