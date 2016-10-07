@@ -49,7 +49,7 @@ roc development test [targets]
 
 ####  Settings options
 _All groups are available._
-* [test](/Users/gustaf/VG/public/roc-package/roc-plugin-test-webpack/extensions/roc-plugin-test-mocha-karma-webpack/docs/Settings.md#test)
+* [test](docs/Settings.md#test)
 
 ####  Defined by extensions
 roc-abstract-plugin-test, roc-plugin-test-mocha-karma-webpack
