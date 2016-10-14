@@ -31,6 +31,9 @@ export default {
             'meaning that it is possible to use "src/" as a root for the resolving.',
         action: lazyRequire('../actions/webpack'),
     }, {
+        hook: 'babel-config',
+        action: lazyRequire('../actions/babel'),
+    }, {
         hook: 'build-karma-config',
         description: 'Builds the default Karma configuration',
         action: lazyRequire('../karma'),
@@ -44,6 +47,21 @@ export default {
                 target: {
                     validator: isString,
                     description: 'The target for which the Webpack configuration should be build for.',
+                },
+                babelConfig: {
+                    validator: isObject(),
+                    description: 'The Babel configuration that should be used for the Webpack build.',
+                },
+            },
+        },
+        'babel-config': {
+            description: 'Used to create a Babel configuration to be used in the Webpack build for test.',
+            initialValue: {},
+            returns: isObject(),
+            arguments: {
+                target: {
+                    validator: isString,
+                    description: 'The target that is used.',
                 },
                 coverage: {
                     validator: isBoolean,

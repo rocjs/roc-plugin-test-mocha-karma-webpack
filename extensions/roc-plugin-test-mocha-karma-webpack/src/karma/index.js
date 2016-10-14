@@ -1,4 +1,4 @@
-export default ({ context: { config: { settings } } }) => (
+export default ({ context: { config: { settings }, directory } }) => (
     grep,
     watch,
     coverage,
@@ -50,7 +50,7 @@ export default ({ context: { config: { settings } } }) => (
         },
 
         // Set the basePath to be where the command is running from, normally this is resolved to this file location
-        basePath: process.cwd(),
+        basePath: directory,
     };
 
     if (coverage) {

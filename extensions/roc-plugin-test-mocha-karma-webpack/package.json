@@ -28,7 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.10.4",
-    "babel-plugin-__coverage__": "~1.11.111",
+    "babel-plugin-istanbul": "~2.0.1",
     "expect": "~1.20.1",
     "karma": "~0.13.22",
     "karma-coverage": "~0.5.5",
