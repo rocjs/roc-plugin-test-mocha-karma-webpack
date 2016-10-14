@@ -8,7 +8,9 @@ export default () => (targets, { grep, watch, coverage }) => {
         return () => {
             appendSettings({ build: { mode: 'test' } });
             // Create Webpack configuration that is to be used in a browser.
-            const webpackConfig = invokeHook('build-webpack', 'web', coverage);
+
+            const babelConfig = invokeHook('babel-config', 'web', coverage);
+            const webpackConfig = invokeHook('build-webpack', 'web', babelConfig);
 
             const karmaConfig = invokeHook('build-karma-config',
                 grep,

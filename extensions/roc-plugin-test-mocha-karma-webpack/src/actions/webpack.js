@@ -11,39 +11,23 @@ function getRegexp(regexp) {
     return micromatch.makeRe(`./${regexp}`);
 }
 
-export default ({ context: { config: { settings } }, previousValue: webpackConfig }) => (target, coverage) => () => {
+export default ({ context: { config: { settings }, directory } }) => () => (webpackConfig) => {
     const newWebpackConfig = { ...webpackConfig };
 
     newWebpackConfig.devtool = 'inline-source-map';
     newWebpackConfig.entry = {};
     newWebpackConfig.output = {};
 
-    if (coverage) {
-        newWebpackConfig.babel = {
-            ...newWebpackConfig.babel,
-            env: {
-                test: {
-                    plugins: [[
-                        require.resolve('babel-plugin-__coverage__'),
-                        {
-                            only: `${settings.test.web.src.path}/**/*.js`,
-                        },
-                    ]],
-                },
-            },
-        };
-    }
-
     newWebpackConfig.resolve.alias = {
         ...newWebpackConfig.resolve.alias,
-        src: join(process.cwd(), settings.test.web.src.path),
+        src: join(directory, settings.test.web.src.path),
     };
 
     newWebpackConfig.plugins.push(
         new webpack.DefinePlugin({
-            __PATH_TESTS__: JSON.stringify(join(process.cwd(), settings.test.web.tests.path)),
+            __PATH_TESTS__: JSON.stringify(join(directory, settings.test.web.tests.path)),
             __PATTERN_TESTS__: getRegexp(settings.test.web.tests.pattern),
-            __PATH_SRC__: JSON.stringify(join(process.cwd(), settings.test.web.src.path)),
+            __PATH_SRC__: JSON.stringify(join(directory, settings.test.web.src.path)),
             __PATTERN_SRC__: getRegexp(settings.test.web.src.pattern),
         })
     );
