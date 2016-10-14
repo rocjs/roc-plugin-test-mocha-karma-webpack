@@ -6,6 +6,7 @@
 * [roc-abstract-plugin-test](#roc-abstract-plugin-test)
   * [run-test-command](#run-test-command)
 * [roc-plugin-test-mocha-karma-webpack](#roc-plugin-test-mocha-karma-webpack)
+  * [babel-config](#babel-config)
   * [build-karma-config](#build-karma-config)
   * [build-webpack](#build-webpack)
 
@@ -44,6 +45,20 @@ __Expected return value:__ _Nothing_
 
 ## roc-plugin-test-mocha-karma-webpack
 
+### babel-config
+
+Used to create a Babel configuration to be used in the Webpack build for test.
+
+__Initial value:__ `{}`  
+__Expected return value:__ `{}`
+
+#### Arguments
+
+| Name     | Description                                             | Type      | Required | Can be empty |
+| -------- | ------------------------------------------------------- | --------- | -------- | ------------ |
+| target   | The target that is used.                                | `String`  | No       | Yes          |
+| coverage | If the code should be prepared for coverage generation. | `Boolean` | No       |              |
+
 ### build-karma-config
 
 Used to create the final Karma configuration for tests.
@@ -69,7 +84,7 @@ __Expected return value:__ `{}`
 
 #### Arguments
 
-| Name     | Description                                                         | Type      | Required | Can be empty |
-| -------- | ------------------------------------------------------------------- | --------- | -------- | ------------ |
-| target   | The target for which the Webpack configuration should be build for. | `String`  | No       | Yes          |
-| coverage | If the code should be prepared for coverage generation.             | `Boolean` | No       |              |
+| Name        | Description                                                         | Type     | Required | Can be empty |
+| ----------- | ------------------------------------------------------------------- | -------- | -------- | ------------ |
+| target      | The target for which the Webpack configuration should be build for. | `String` | No       | Yes          |
+| babelConfig | The Babel configuration that should be used for the Webpack build.  | `{}`     | No       | Yes          |

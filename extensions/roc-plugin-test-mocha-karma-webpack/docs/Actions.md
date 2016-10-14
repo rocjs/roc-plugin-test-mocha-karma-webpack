@@ -2,11 +2,18 @@
 
 ## Actions
 * [roc-plugin-test-mocha-karma-webpack](#roc-plugin-test-mocha-karma-webpack)
+  * [babel-config](#babel-config)
   * [build-karma-config](#build-karma-config)
   * [build-webpack](#build-webpack)
   * [run-test-command](#run-test-command)
 
 ## roc-plugin-test-mocha-karma-webpack
+
+### babel-config
+
+__Connects to extension:__ Not specified  
+__Connects to hook:__ `babel-config`  
+__Have post:__ No  
 
 ### build-karma-config
 
